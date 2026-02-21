@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import {NavbarComponent} from './components/navbar/navbar.component';
 import {FooterComponent} from './components/footer/footer.component';
-import {MovieListComponent} from './components/movie/movie-list/movie-list.component';
+import {MovieListComponent} from './components/movie/movie-list/card-list.component';
 
 @Component({
   selector: 'app-root',
