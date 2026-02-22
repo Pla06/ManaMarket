@@ -1,28 +1,28 @@
 import { Routes } from '@angular/router';
-import {MovieListComponent} from './components/movie/movie-list/card-list.component';
-import {MovieEditComponent} from './components/movie/movie-edit/card-edit.component';
+import {CardListComponent} from './components/card/card-list/card-list.component';
+import {CardEditComponent} from './components/card/card-edit/card-edit.component';
 
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'movies',
+    redirectTo: 'card/list',
     pathMatch: 'full'
   },
   {
-    path: 'movies/list',
-    component: MovieListComponent
+    path: 'card/list',
+    component: CardListComponent
   },
   {
-    path: 'movies/add',
-    component: MovieEditComponent,
+    path: 'card/add',
+    component: CardEditComponent,
   },
   {
-    path: 'movies/edit/:id',
-    component: MovieEditComponent,
+    path: 'card/edit/:id',
+    component: CardEditComponent,
   },
   {
     path: '**',
-    redirectTo: 'movies',
+    redirectTo: 'card/list',
     pathMatch: 'full'
   }
 ];

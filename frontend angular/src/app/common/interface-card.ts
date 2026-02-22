@@ -1,10 +1,10 @@
-export interface InterfaceMovies {
-  status: Movie[]
+export interface InterfaceCards {
+  status: Card[]
 }
-export interface InterfaceMovie {
-  status: Movie
+export interface InterfaceCard {
+  status: Card
 }
-export interface Movie {
+export interface Card {
   imdb: Imdb
   _id: string
   title: string
