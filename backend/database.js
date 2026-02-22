@@ -1,7 +1,26 @@
 const mongoose = require('mongoose');
-const URI = 'mongodb+srv://hecmardom_db_user:dyGkaFn7LiHdVjEc@manamarket.3lsst8d.mongodb.net/ManaMarket?appName=ManaMarket';
+require('dotenv').config();
+
+const ATLAS_URI = 'mongodb+srv://hecmardom_db_user:dyGkaFn7LiHdVjEc@manamarket.3lsst8d.mongodb.net/ManaMarket?appName=ManaMarket';
+const LOCAL_URI = 'mongodb://127.0.0.1:27017/ManaMarket';
+const URI = process.env.MONGODB_URI || ATLAS_URI;
+
 mongoose.connect(URI)
-    .then(db => console.log('DB is connected'))
-    .catch(err => console.error(err));
+    .then(() => console.log(`DB is connected (${URI.includes('127.0.0.1') ? 'local' : 'atlas'})`))
+    .catch(async (err) => {
+        if (!process.env.MONGODB_URI) {
+            console.error('Atlas connection failed:', err.message);
+            console.log('Trying local MongoDB at mongodb://127.0.0.1:27017/ManaMarket ...');
+            try {
+                await mongoose.connect(LOCAL_URI);
+                console.log('DB is connected (local fallback)');
+            } catch (localErr) {
+                console.error('Local MongoDB connection failed:', localErr.message);
+            }
+            return;
+        }
+
+        console.error('Database connection error:', err.message);
+    });
 
 module.exports = mongoose;
