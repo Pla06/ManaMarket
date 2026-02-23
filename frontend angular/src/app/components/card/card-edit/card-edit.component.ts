@@ -2,6 +2,7 @@ import {Component, inject, Input, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import {ServiceCardService} from '../../../service/service-card.service';
 import {ActivatedRoute, Router, RouterLink} from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-card-edit',
@@ -17,6 +18,7 @@ export class CardEditComponent implements OnInit{
   @Input("id") id!:string;
   editar = false;
   collectionList: string[] = [];
+  isSubmitting = false;
 
   private readonly formBuilder: FormBuilder = inject(FormBuilder);
   private readonly cardService: ServiceCardService = inject(ServiceCardService);
@@ -102,6 +104,12 @@ export class CardEditComponent implements OnInit{
         },
         error:(err)=>{
           console.error('Error loading card', err);
+          Swal.fire({
+            icon: 'error',
+            title: 'Error al cargar',
+            text: 'No se pudo cargar la información de la carta',
+            confirmButtonText: 'Entendido'
+          });
         },
         complete:()=>{
           console.log('Card loaded successfully');
@@ -123,35 +131,67 @@ export class CardEditComponent implements OnInit{
   }
 
   addCard() {
+    if (this.isSubmitting) {
+      return;
+    }
+
     if (this.editar && this.formCard.valid){
+      this.isSubmitting = true;
       this.cardService.updateCard(this.formCard.getRawValue()).subscribe(
         {
           next:(data)=>{
-            console.log('Card updated successfully', data);
-            this.router.navigate(['/card/list'])
+            Swal.fire({
+              icon: 'success',
+              title: '¡Carta modificada!',
+              text: 'La carta ha sido actualizada correctamente',
+              confirmButtonText: 'Continuar'
+            }).then(() => {
+              this.router.navigate(['/card/list']);
+            });
           },
           error:(err)=>{
             console.error('Error updating card', err);
+            this.isSubmitting = false;
+            Swal.fire({
+              icon: 'error',
+              title: 'Error al modificar',
+              text: 'No se pudo actualizar la carta. Por favor, inténtalo de nuevo.',
+              confirmButtonText: 'Entendido'
+            });
           },
           complete:()=> {
-            console.log('Update card request completed');
+            this.isSubmitting = false;
           }
         }
       )
     } else
     if (!this.editar && this.formCard.valid)
     {
+      this.isSubmitting = true;
       this.cardService.addCard(this.formCard.getRawValue()).subscribe(
         {
           next:(data)=>{
-            console.log('Card added successfully', data);
-            this.router.navigate(['/card/list'])
+            Swal.fire({
+              icon: 'success',
+              title: '¡Carta creada!',
+              text: 'La carta ha sido agregada correctamente',
+              confirmButtonText: 'Continuar'
+            }).then(() => {
+              this.router.navigate(['/card/list']);
+            });
           },
           error:(err)=>{
-            console.error('Error updating card', err);
+            console.error('Error creating card', err);
+            this.isSubmitting = false;
+            Swal.fire({
+              icon: 'error',
+              title: 'Error al crear',
+              text: 'No se pudo crear la carta. Por favor, inténtalo de nuevo.',
+              confirmButtonText: 'Entendido'
+            });
           },
           complete:()=> {
-            console.log('Update card request completed');
+            this.isSubmitting = false;
           }
         }
       )
@@ -168,5 +208,51 @@ export class CardEditComponent implements OnInit{
     }
     this.formCard.patchValue({ collection: value });
     this.myNewCollection.reset();
+  }
+
+  deleteCard() {
+    if (!this.id || this.isSubmitting) {
+      return;
+    }
+
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: 'Esta acción no se puede deshacer',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#d33',
+      cancelButtonColor: '#6c757d',
+      confirmButtonText: 'Sí, eliminar',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.isSubmitting = true;
+        this.cardService.deleteCard(this.id).subscribe({
+          next: () => {
+            Swal.fire({
+              icon: 'success',
+              title: '¡Carta eliminada!',
+              text: 'La carta ha sido eliminada correctamente',
+              confirmButtonText: 'Continuar'
+            }).then(() => {
+              this.router.navigate(['/card/list']);
+            });
+          },
+          error: (err) => {
+            console.error('Error deleting card', err);
+            this.isSubmitting = false;
+            Swal.fire({
+              icon: 'error',
+              title: 'Error al eliminar',
+              text: 'No se pudo eliminar la carta. Por favor, inténtalo de nuevo.',
+              confirmButtonText: 'Entendido'
+            });
+          },
+          complete: () => {
+            this.isSubmitting = false;
+          }
+        });
+      }
+    });
   }
 }
