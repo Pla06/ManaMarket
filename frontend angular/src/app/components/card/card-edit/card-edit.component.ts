@@ -1,13 +1,14 @@
 import {Component, inject, Input, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import {ServiceCardService} from '../../../service/service-card.service';
-import {ActivatedRoute, Router} from '@angular/router';
+import {ActivatedRoute, Router, RouterLink} from '@angular/router';
 
 @Component({
   selector: 'app-card-edit',
   imports: [
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterLink
   ],
   templateUrl: './card-edit.component.html',
   styleUrl: './card-edit.component.css'
