@@ -40,7 +40,7 @@ export class CardListComponent {
   protected readonly faTrashCan = faTrashCan;
 
   deleteCard(card: Card) {
-    if (confirm('Desea eliminar la carta?' + card.title + '?')) {
+    if (confirm('Desea eliminar la carta?' + card.name + '?')) {
       this.cardService.deleteCard(card._id).subscribe({
         next: (data) => {
           console.log('Carta eliminada:', data);

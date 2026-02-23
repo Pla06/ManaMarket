@@ -1,7 +1,12 @@
-.card:hover{
-  cursor: pointer;
-  background: var(--bs-light)!important;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  transform: translateY(-5px);
-  transition: all 0.3s ease;
+.card-thumb {
+  width: 120px;
+  height: 168px;
+  object-fit: cover;
+  border-radius: 0.25rem;
+}
+
+.table td,
+.table th {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }

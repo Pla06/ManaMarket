@@ -13,26 +13,26 @@ const usersSeed = [
 ];
 
 const cardsSeed = [
-    { name: 'Lightning Bolt', collection: 'Revised', rarity: 'Common', type: 'Instant', price: 4.5, stock: 30, language: 'EN', condition: 'NM' },
-    { name: 'Counterspell', collection: 'Ice Age', rarity: 'Common', type: 'Instant', price: 2.2, stock: 40, language: 'EN', condition: 'EX' },
-    { name: 'Dark Ritual', collection: 'Mirage', rarity: 'Common', type: 'Instant', price: 1.9, stock: 35, language: 'EN', condition: 'NM' },
-    { name: 'Swords to Plowshares', collection: 'Revised', rarity: 'Uncommon', type: 'Instant', price: 3.8, stock: 24, language: 'EN', condition: 'NM' },
-    { name: 'Brainstorm', collection: 'Mercadian Masques', rarity: 'Common', type: 'Instant', price: 1.5, stock: 50, language: 'EN', condition: 'NM' },
-    { name: 'Birds of Paradise', collection: '7th Edition', rarity: 'Rare', type: 'Creature', price: 7.0, stock: 16, language: 'EN', condition: 'EX' },
-    { name: 'Wrath of God', collection: '10th Edition', rarity: 'Rare', type: 'Sorcery', price: 5.2, stock: 18, language: 'EN', condition: 'NM' },
-    { name: 'Serra Angel', collection: 'Revised', rarity: 'Uncommon', type: 'Creature', price: 1.1, stock: 60, language: 'EN', condition: 'LP' },
-    { name: 'Shivan Dragon', collection: '4th Edition', rarity: 'Rare', type: 'Creature', price: 2.7, stock: 22, language: 'EN', condition: 'EX' },
-    { name: 'Llanowar Elves', collection: 'Dominaria', rarity: 'Common', type: 'Creature', price: 0.6, stock: 120, language: 'EN', condition: 'NM' },
-    { name: 'Path to Exile', collection: 'Modern Masters', rarity: 'Uncommon', type: 'Instant', price: 3.3, stock: 25, language: 'EN', condition: 'NM' },
-    { name: 'Fatal Push', collection: 'Aether Revolt', rarity: 'Uncommon', type: 'Instant', price: 2.9, stock: 28, language: 'EN', condition: 'NM' },
-    { name: 'Thoughtseize', collection: 'Theros', rarity: 'Rare', type: 'Sorcery', price: 12.5, stock: 14, language: 'EN', condition: 'NM' },
-    { name: 'Opt', collection: 'Ixalan', rarity: 'Common', type: 'Instant', price: 0.4, stock: 90, language: 'EN', condition: 'NM' },
-    { name: 'Negate', collection: 'Core Set 2020', rarity: 'Common', type: 'Instant', price: 0.3, stock: 100, language: 'EN', condition: 'NM' },
-    { name: 'Doom Blade', collection: 'Magic 2012', rarity: 'Uncommon', type: 'Instant', price: 0.8, stock: 48, language: 'EN', condition: 'EX' },
-    { name: 'Duress', collection: 'M19', rarity: 'Common', type: 'Sorcery', price: 0.5, stock: 75, language: 'EN', condition: 'NM' },
-    { name: 'Goblin Guide', collection: 'Zendikar', rarity: 'Rare', type: 'Creature', price: 8.4, stock: 12, language: 'EN', condition: 'NM' },
-    { name: 'Ponder', collection: 'Lorwyn', rarity: 'Common', type: 'Sorcery', price: 2.1, stock: 34, language: 'EN', condition: 'NM' },
-    { name: 'Arcane Denial', collection: 'Alliances', rarity: 'Common', type: 'Instant', price: 1.2, stock: 41, language: 'EN', condition: 'LP' }
+    { name: 'Lightning Bolt', collection: 'Revised', rarity: 'Common', type: 'Instant', price: 4.5, stock: 30, language: 'EN', condition: 'NM', imageUrl: 'https://m.media-amazon.com/images/I/41kbCXQNryL._AC_UF894,1000_QL80_.jpg' },
+    { name: 'Counterspell', collection: 'Ice Age', rarity: 'Common', type: 'Instant', price: 2.2, stock: 40, language: 'EN', condition: 'EX', imageUrl: 'https://i.ebayimg.com/images/g/RHQAAOSwg3li6wzs/s-l1200.jpg' },
+    { name: 'Dark Ritual', collection: 'Mirage', rarity: 'Common', type: 'Instant', price: 1.9, stock: 35, language: 'EN', condition: 'NM', imageUrl: 'https://m.media-amazon.com/images/I/41eDZuevMmL._AC_UF894,1000_QL80_.jpg' },
+    { name: 'Swords to Plowshares', collection: 'Revised', rarity: 'Uncommon', type: 'Instant', price: 3.8, stock: 24, language: 'EN', condition: 'NM', imageUrl: 'https://m.media-amazon.com/images/I/51ue3R8BIbL.jpg' },
+    { name: 'Brainstorm', collection: 'Mercadian Masques', rarity: 'Common', type: 'Instant', price: 1.5, stock: 50, language: 'EN', condition: 'NM', imageUrl: 'https://m.media-amazon.com/images/I/511cCagUfnL._AC_UF894,1000_QL80_.jpg' },
+    { name: 'Birds of Paradise', collection: '7th Edition', rarity: 'Rare', type: 'Creature', price: 7.0, stock: 16, language: 'EN', condition: 'EX', imageUrl: 'https://m.media-amazon.com/images/I/51IlW4vm98L._AC_UF894,1000_QL80_.jpg' },
+    { name: 'Wrath of God', collection: '10th Edition', rarity: 'Rare', type: 'Sorcery', price: 5.2, stock: 18, language: 'EN', condition: 'NM', imageUrl: 'https://m.media-amazon.com/images/I/41ojSUcjaTL._AC_UF894,1000_QL80_.jpg' },
+    { name: 'Serra Angel', collection: 'Revised', rarity: 'Uncommon', type: 'Creature', price: 1.1, stock: 60, language: 'EN', condition: 'LP', imageUrl: 'https://i.ebayimg.com/images/g/by0AAOSwDPta8P0R/s-l400.jpg' },
+    { name: 'Shivan Dragon', collection: '4th Edition', rarity: 'Rare', type: 'Creature', price: 2.7, stock: 22, language: 'EN', condition: 'EX', imageUrl: 'https://m.media-amazon.com/images/I/41cHdIuTb-L._AC_UF894,1000_QL80_.jpg' },
+    { name: 'Llanowar Elves', collection: 'Dominaria', rarity: 'Common', type: 'Creature', price: 0.6, stock: 120, language: 'EN', condition: 'NM', imageUrl: 'https://m.media-amazon.com/images/I/41dxQWOqB8L._AC_UF894,1000_QL80_.jpg' },
+    { name: 'Path to Exile', collection: 'Modern Masters', rarity: 'Uncommon', type: 'Instant', price: 3.3, stock: 25, language: 'EN', condition: 'NM', imageUrl: 'https://gatherer-static.wizards.com/Cards/medium/A6A39994EAEE241AEF64AA1E1BFD926545810A66B70B5B5C2E77E9A578E5C9BA.png' },
+    { name: 'Fatal Push', collection: 'Aether Revolt', rarity: 'Uncommon', type: 'Instant', price: 2.9, stock: 28, language: 'EN', condition: 'NM', imageUrl: 'https://assets.moxfield.net/cards/card-EgqVw-normal.webp?278169828' },
+    { name: 'Thoughtseize', collection: 'Theros', rarity: 'Rare', type: 'Sorcery', price: 12.5, stock: 14, language: 'EN', condition: 'NM', imageUrl: 'https://assets.moxfield.net/cards/card-EJ3KM-normal.webp?278169976' },
+    { name: 'Opt', collection: 'Ixalan', rarity: 'Common', type: 'Instant', price: 0.4, stock: 90, language: 'EN', condition: 'NM', imageUrl: 'https://m.media-amazon.com/images/I/41N9MmUfJVL._AC_UF894,1000_QL80_.jpg' },
+    { name: 'Negate', collection: 'Core Set 2020', rarity: 'Common', type: 'Instant', price: 0.3, stock: 100, language: 'EN', condition: 'NM', imageUrl: 'https://assets.moxfield.net/cards/card-NA7rJ-normal.webp?277644145' },
+    { name: 'Doom Blade', collection: 'Magic 2012', rarity: 'Uncommon', type: 'Instant', price: 0.8, stock: 48, language: 'EN', condition: 'EX', imageUrl: 'https://assets.moxfield.net/cards/card-EQljB-normal.webp?278213270' },
+    { name: 'Duress', collection: 'M19', rarity: 'Common', type: 'Sorcery', price: 0.5, stock: 75, language: 'EN', condition: 'NM', imageUrl: 'https://assets.moxfield.net/cards/card-xR24J-normal.webp?277885710' },
+    { name: 'Goblin Guide', collection: 'Zendikar', rarity: 'Rare', type: 'Creature', price: 8.4, stock: 12, language: 'EN', condition: 'NM', imageUrl: 'https://assets.moxfield.net/cards/card-LReKl-normal.webp?278169848' },
+    { name: 'Ponder', collection: 'Lorwyn', rarity: 'Common', type: 'Sorcery', price: 2.1, stock: 34, language: 'EN', condition: 'NM', imageUrl: 'https://assets.moxfield.net/cards/card-DAWrp-normal.webp?274840118' },
+    { name: 'Arcane Denial', collection: 'Alliances', rarity: 'Common', type: 'Instant', price: 1.2, stock: 41, language: 'EN', condition: 'LP', imageUrl: 'https://assets.moxfield.net/cards/card-PbqV3-normal.webp?264630703' }
 ];
 
 async function runSeed() {

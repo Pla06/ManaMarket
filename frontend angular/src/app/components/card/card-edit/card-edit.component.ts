@@ -15,7 +15,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 export class CardEditComponent implements OnInit{
   @Input("id") id!:string;
   editar = false;
-  genreList: string[] = [];
+  collectionList: string[] = [];
 
   private readonly formBuilder: FormBuilder = inject(FormBuilder);
   private readonly cardService: ServiceCardService = inject(ServiceCardService);
@@ -24,36 +24,33 @@ export class CardEditComponent implements OnInit{
 
   formCard : FormGroup = this.formBuilder.group({
     _id: [],
-    title: ['', [Validators.required,
-    Validators.minLength(2),
-    Validators.maxLength(200)]],
-    year: [ new Date().getFullYear(), [
-      Validators.required,
-      Validators.min(1800),
-      Validators.max(new Date().getFullYear())]],
-    director: ['', [Validators.required,
+    name: ['', [Validators.required,
       Validators.minLength(2),
-      Validators.maxLength(500)]],
-    plot: ['', [Validators.required,
+      Validators.maxLength(120)]],
+    collection: ['', [Validators.required,
       Validators.minLength(2),
-      Validators.maxLength(500)]],
-    genres: [],
-    poster: ['', [Validators.required,
+      Validators.maxLength(120)]],
+    rarity: ['', [Validators.required,
       Validators.minLength(2),
-      Validators.maxLength(500)]],
-    imdb: this.formBuilder.group({
-      rating: [0,  [
-        Validators.required,
-        Validators.min(0),
-        Validators.max(10)]],
-      votes: [0,  [
-        Validators.required,
-        Validators.min(0)]],
-    })
+      Validators.maxLength(50)]],
+    type: ['', [Validators.required,
+      Validators.minLength(2),
+      Validators.maxLength(50)]],
+    price: [0, [Validators.required, Validators.min(0)]],
+    stock: [0, [Validators.required, Validators.min(0)]],
+    language: ['', [Validators.required,
+      Validators.minLength(2),
+      Validators.maxLength(10)]],
+    condition: ['', [Validators.required,
+      Validators.minLength(2),
+      Validators.maxLength(20)]],
+    imageUrl: ['', [Validators.required,
+      Validators.minLength(5),
+      Validators.maxLength(500)]]
   })
 
-  myNewGenres: FormGroup = this.formBuilder.group({
-    newGenre:['']
+  myNewCollection: FormGroup = this.formBuilder.group({
+    newCollection:['']
   });
 
 
@@ -62,33 +59,37 @@ export class CardEditComponent implements OnInit{
     this.loadCard();
   }
 
-  get title():any {
-    return this.formCard.get('title');
+  get name():any {
+    return this.formCard.get('name');
   }
-  get year():any {
-    return this.formCard.get('year');
+  get collection():any {
+    return this.formCard.get('collection');
   }
-  get director():any {
-    return this.formCard.get('director');
+  get rarity():any {
+    return this.formCard.get('rarity');
   }
-  get plot():any {
-    return this.formCard.get('plot');
+  get type():any {
+    return this.formCard.get('type');
   }
-  get genres():any {
-    return this.formCard.get('genres');
+  get price():any {
+    return this.formCard.get('price');
   }
-  get poster():any {
-    return this.formCard.get('poster');
+  get stock():any {
+    return this.formCard.get('stock');
   }
-  get rating():any {
-    return this.formCard.get('imdb.rating');
+  get language():any {
+    return this.formCard.get('language');
   }
-  get votes():any {
-    return this.formCard.get('imdb.votes');
+  get condition():any {
+    return this.formCard.get('condition');
   }
 
-  get newGenre():any {
-    return this.myNewGenres.get('newGenre');
+  get imageUrl():any {
+    return this.formCard.get('imageUrl');
+  }
+
+  get newCollection():any {
+    return this.myNewCollection.get('newCollection');
   }
 
   private loadCard() {
@@ -96,7 +97,7 @@ export class CardEditComponent implements OnInit{
       this.editar = true;
       this.cardService.getCard(this.id).subscribe({
         next:(data)=>{
-          this.formCard.setValue(data.status)
+          this.formCard.patchValue(data.status)
         },
         error:(err)=>{
           console.error('Error loading card', err);
@@ -107,12 +108,15 @@ export class CardEditComponent implements OnInit{
       })
     }
     else {
-      this.formCard.reset();
+      this.formCard.reset({
+        price: 0,
+        stock: 0
+      });
       this.editar = false;
     }
     this.cardService.getCollections().subscribe({
       next:(data)=>{
-        this.genreList = data.status
+        this.collectionList = data.status
       }
     })
   }
@@ -153,19 +157,15 @@ export class CardEditComponent implements OnInit{
     }
   }
 
-  addNewGenre() {
-    let newGenre;
-    if (!newGenre){
-      newGenre = [];
+  addNewCollection() {
+    const value = (this.newCollection.value ?? '').trim();
+    if (!value) {
+      return;
     }
-    if(!this.editar){
-      this.genreList.push(this.myNewGenres.value)
-    } else{
-      newGenre = this.genres.value;
-      newGenre.push(this.newGenre.value)
-      this.genreList.push(this.newGenre.value);
-      this.formCard.setControl('genres', new FormControl(newGenre));
+    if (!this.collectionList.includes(value)) {
+      this.collectionList.push(value);
     }
-    this.myNewGenres.reset()
+    this.formCard.patchValue({ collection: value });
+    this.myNewCollection.reset();
   }
 }
