@@ -1,28 +1,48 @@
 import { Routes } from '@angular/router';
-import {MovieListComponent} from './components/movie/movie-list/card-list.component';
-import {MovieEditComponent} from './components/movie/movie-edit/card-edit.component';
+import {CardListComponent} from './components/card/card-list/card-list.component';
+import {CardEditComponent} from './components/card/card-edit/card-edit.component';
+import {CardDetailComponent} from './components/card/card-detail/card-detail.component';
+import {CartPageComponent} from './components/cart/cart-page/cart-page.component';
+import {HomeComponent} from './components/home/home.component';
+import {FavoritesComponent} from './components/favorites/favorites.component';
 
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'movies',
+    redirectTo: 'home',
     pathMatch: 'full'
   },
   {
-    path: 'movies/list',
-    component: MovieListComponent
+    path: 'home',
+    component: HomeComponent
   },
   {
-    path: 'movies/add',
-    component: MovieEditComponent,
+    path: 'card/list',
+    component: CardListComponent
   },
   {
-    path: 'movies/edit/:id',
-    component: MovieEditComponent,
+    path: 'card/detail/:id',
+    component: CardDetailComponent
+  },
+  {
+    path: 'card/add',
+    component: CardEditComponent,
+  },
+  {
+    path: 'card/edit/:id',
+    component: CardEditComponent,
+  },
+  {
+    path: 'cart',
+    component: CartPageComponent
+  },
+  {
+    path: 'favorites',
+    component: FavoritesComponent
   },
   {
     path: '**',
-    redirectTo: 'movies',
+    redirectTo: 'home',
     pathMatch: 'full'
   }
 ];

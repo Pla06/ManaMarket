@@ -10,7 +10,8 @@ const cardSchema = new Schema(
         price: { type: Number, required: true, min: 0 },
         stock: { type: Number, required: true, min: 0 },
         language: { type: String, required: true, trim: true },
-        condition: { type: String, required: true, trim: true }
+        condition: { type: String, required: true, trim: true },
+        imageUrl: { type: String, required: true, trim: true }
     },
     { versionKey: false, timestamps: true }
 );

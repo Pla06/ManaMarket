@@ -1,21 +1,19 @@
-export interface InterfaceMovies {
-  status: Movie[]
+export interface InterfaceCards {
+  status: Card[]
 }
-export interface InterfaceMovie {
-  status: Movie
+export interface InterfaceCard {
+  status: Card
 }
-export interface Movie {
-  imdb: Imdb
+export interface Card {
   _id: string
-  title: string
-  year: number
-  director: string
-  plot: string
-  genres: string[]
-  poster: string
+  name: string
+  collection: string
+  rarity: string
+  type: string
+  price: number
+  stock: number
+  language: string
+  condition: string
+  imageUrl: string
   __v?: number
-}
-export interface Imdb {
-  rating: number
-  votes: number
 }
