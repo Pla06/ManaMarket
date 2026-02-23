@@ -1,0 +1,52 @@
+<div class="container-fluid my-4">
+  <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-3">
+    <h2 class="display-6 mb-0">Carrito</h2>
+    <button class="btn btn-outline-danger" type="button" (click)="clear()">Vaciar carrito</button>
+  </div>
+
+  @if ((items$ | async)?.length === 0) {
+    <div class="alert alert-info">Aun no hay cartas en el carrito.</div>
+    <button class="btn btn-primary" routerLink="/card/list">Volver al listado</button>
+  } @else {
+    <div class="table-responsive">
+      <table class="table align-middle">
+        <thead class="table-light">
+          <tr>
+            <th>Imagen</th>
+            <th>Nombre</th>
+            <th class="text-end">Precio</th>
+            <th class="text-center">Cantidad</th>
+            <th class="text-end">Subtotal</th>
+            <th class="text-center">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (item of items$ | async; track item.card._id) {
+            <tr>
+              <td>
+                <img class="cart-thumb" [src]="item.card.imageUrl" [alt]="item.card.name">
+              </td>
+              <td>{{ item.card.name }}</td>
+              <td class="text-end">{{ item.card.price | currency:'EUR' }}</td>
+              <td class="text-center">
+                <input class="form-control form-control-sm text-center" type="number" min="1"
+                       [value]="item.quantity" (change)="updateQuantity(item.card._id, $any($event.target).value)">
+              </td>
+              <td class="text-end">{{ (item.card.price * item.quantity) | currency:'EUR' }}</td>
+              <td class="text-center">
+                <button class="btn btn-sm btn-outline-danger" type="button" (click)="remove(item.card._id)">Quitar</button>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+
+    <div class="d-flex justify-content-end mt-3">
+      <div class="total-box">
+        <div class="label">Total</div>
+        <div class="value">{{ total$ | async | currency:'EUR' }}</div>
+      </div>
+    </div>
+  }
+</div>

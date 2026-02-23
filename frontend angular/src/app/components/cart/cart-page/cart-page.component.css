@@ -1,0 +1,27 @@
+.cart-thumb {
+  width: 72px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 0.5rem;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+}
+
+.total-box {
+  padding: 1rem 1.5rem;
+  border-radius: 0.75rem;
+  background: #f8f9fa;
+  text-align: right;
+  min-width: 200px;
+}
+
+.total-box .label {
+  color: #6c757d;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: 0.8rem;
+}
+
+.total-box .value {
+  font-size: 1.4rem;
+  font-weight: 700;
+}

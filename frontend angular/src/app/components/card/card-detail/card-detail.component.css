@@ -1,0 +1,25 @@
+.detail-image {
+  width: 100%;
+  border-radius: 0.75rem;
+  box-shadow: 0 16px 30px rgba(0, 0, 0, 0.2);
+  object-fit: cover;
+  aspect-ratio: 3 / 4;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1rem;
+}
+
+.label {
+  font-size: 0.85rem;
+  color: #6c757d;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.value {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
