@@ -1,3 +1,7 @@
+/**
+ * Controlador de usuarios.
+ * Métodos para obtener, crear, actualizar y borrar usuarios.
+ */
 const User = require('../models/user.model');
 const userCtrl = {};
 

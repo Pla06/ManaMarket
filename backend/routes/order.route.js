@@ -1,3 +1,7 @@
+/**
+ * Rutas para pedidos (orders).
+ * CRUD estándar con order.controller.
+ */
 const express = require('express');
 const orderCtrl = require('../controllers/order.controller');
 const router = express.Router();

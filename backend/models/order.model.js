@@ -1,3 +1,7 @@
+/**
+ * Esquema de pedidos (orders).
+ * Similar al carrito pero incluye total y estado de pago/envío.
+ */
 const mongoose = require('mongoose');
 const { Schema } = require('mongoose');
 

@@ -1,4 +1,8 @@
-import {Component, inject} from '@angular/core';
+/**
+ * Componente que muestra la lista de cartas.
+ * Permite filtrar, ordenar, paginar y marcar como favorito.
+ */
+import {Component, inject}from '@angular/core';
 import {ServiceCardService} from '../../../service/service-card.service';
 import {Card} from '../../../common/interface-card';
 import {RouterLink} from '@angular/router';

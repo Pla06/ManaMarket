@@ -1,3 +1,9 @@
+/**
+ * Configuración de conexión a MongoDB.
+ * Intenta conectar a la URI almacenada en MONGODB_URI o al servidor Atlas.
+ * Si falla y no hay variable de entorno, reintenta con una instancia local.
+ * Exporta el objeto mongoose para usar en otros módulos.
+ */
 const mongoose = require('mongoose');
 require('dotenv').config();
 

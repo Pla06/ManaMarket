@@ -1,3 +1,7 @@
+/**
+ * Esquema de carritos de compra.
+ * Cada carrito tiene referencia a un usuario, lista de items y estado.
+ */
 const mongoose = require('mongoose');
 const { Schema } = require('mongoose');
 

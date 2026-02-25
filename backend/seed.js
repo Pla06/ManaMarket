@@ -1,3 +1,8 @@
+/**
+ * Script para poblar la base de datos con datos iniciales (usuarios,
+ * cartas, carritos y pedidos). Se borra el contenido existente y se
+ * insertan registros de ejemplo. Útil para desarrollo o pruebas.
+ */
 const mongoose = require('./database');
 const User = require('./models/user.model');
 const Card = require('./models/card.model');

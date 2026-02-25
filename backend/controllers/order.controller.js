@@ -1,3 +1,7 @@
+/**
+ * Controlador de pedidos.
+ * CRUD básico para el modelo Order, usado por las rutas `/orders`.
+ */
 const Order = require('../models/order.model');
 const orderCtrl = {};
 

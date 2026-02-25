@@ -1,3 +1,8 @@
+/**
+ * Rutas para el recurso «cards».
+ * Se utiliza un controlador con métodos CRUD y algunas compatibilidades
+ * con nombres antiguos.
+ */
 const express = require('express');
 const cardCtrl = require('../controllers/card.controller');
 const router = express.Router();

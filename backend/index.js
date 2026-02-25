@@ -1,3 +1,12 @@
+/**
+ * Main backend server startup file.
+ * Configura Express, middlewares y rutas, y arranca el servidor.
+ * - usa morgan para logging, cors para cross‑origin y express.json para
+ *   parsear el cuerpo de las peticiones.
+ * - conecta con la base de datos en ./database.
+ * - monta routers para /api/v1/cards, /users, /carts, /orders.
+ * - inicia el servidor en el puerto especificado por PORT o 3000.
+ */
 // console.log("Hola desde el backend");
 const express = require('express');
 const cors = require('cors');

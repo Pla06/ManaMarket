@@ -1,3 +1,7 @@
+/**
+ * Servicio que encapsula llamadas HTTP al backend para el recurso cards.
+ * Proporciona métodos para obtener, crear, actualizar y borrar cartas.
+ */
 import {inject, Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';

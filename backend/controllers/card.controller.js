@@ -1,3 +1,8 @@
+/**
+ * Controlador de cartas.
+ * Contiene funciones CRUD para el modelo Card y otras utilidades como
+ * obtener colecciones únicas. Cada función recibe req/res de Express.
+ */
 const Card = require('../models/card.model');
 const cardCtrl = {};
 
