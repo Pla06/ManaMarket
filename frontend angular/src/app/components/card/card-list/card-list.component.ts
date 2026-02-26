@@ -32,6 +32,8 @@ export class CardListComponent {
   paginatedCards: Card[] = [];
   collections: string[] = [];
   conditions: string[] = [];
+  isLoading = true;
+  errorMessage: string | null = null;
   
   // Filtros
   selectedCollection = '';
@@ -52,6 +54,8 @@ export class CardListComponent {
   }
 
   private loadCards() {
+    this.isLoading = true;
+    this.errorMessage = null;
     this.cardService.getCards().subscribe(
       {
         next: data =>{
@@ -59,9 +63,13 @@ export class CardListComponent {
           this.cards = [...this.allCards];
           this.extractFilters();
           this.updatePagination();
+          this.isLoading = false;
+          console.log(`Loaded ${this.allCards.length} cards successfully`);
         },
         error: err =>{
           console.error('Error carga de cards:', err);
+          this.errorMessage = `Error al cargar las cartas: ${err.message || 'Error desconocido'}`;
+          this.isLoading = false;
         },
         complete:() =>{
           console.log('Card List cargada correctamente');

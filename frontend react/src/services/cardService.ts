@@ -1,6 +1,16 @@
 import { Card, InterfaceCard, InterfaceCards } from '../common/interfaces';
 
-const BASE_URL = 'http://localhost:3000/api/v1/cards/';
+const getBaseUrl = (): string => {
+  // En desarrollo: usa localhost:3000
+  // En producción: usa la URL del backend desplegado en Vercel
+  if (typeof window !== 'undefined' && window.location.hostname === 'localhost') {
+    return 'http://localhost:3000/api/v1/cards/';
+  }
+  // Cambiar esto por tu URL del backend en Vercel
+  return '/api/v1/cards/';
+};
+
+const BASE_URL = getBaseUrl();
 const TIMEOUT = 10000; // 10 segundos timeout
 
 export interface ApiResponse {

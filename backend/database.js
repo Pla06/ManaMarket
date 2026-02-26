@@ -8,7 +8,7 @@
 const mongoose = require('mongoose');
 require('dotenv').config();
 
-const LOCAL_URI = 'mongodb://127.0.0.1:27017/ManaMarket';
+const LOCAL_URI = 'mongodb+srv://Mario:MarioYHéctor@cluster0.bbf5bdv.mongodb.net/ManaMarket?appName=Cluster0';
 const URI = process.env.MONGODB_URI || LOCAL_URI;
 
 let mongooseConnection = null;

@@ -12,7 +12,17 @@ import {InterfaceCard, InterfaceCards, Card} from '../common/interface-card';
 })
 export class ServiceCardService {
   private readonly http: HttpClient = inject(HttpClient);
-  private readonly URL_Base: string = 'http://localhost:3000/api/v1/cards/';
+  private readonly URL_Base: string = this.getApiUrl();
+
+  private getApiUrl(): string {
+    // En desarrollo: usa localhost:3000
+    // En producción: usa la URL del backend desplegado en Vercel
+    if (typeof window !== 'undefined' && window.location.hostname === 'localhost') {
+      return 'http://localhost:3000/api/v1/cards/';
+    }
+    // Cambiar esto por tu URL del backend en Vercel
+    return '/api/v1/cards/';
+  }
 
   constructor() { }
   //todas las peliculas
