@@ -43,7 +43,7 @@
               </div>
 
               <div class="col-12">
-                <div class="input-group mb-3">
+                <div class="input-group mb-3" [formGroup]="myNewCollection">
                   <input type="text" formControlName="newCollection" class="form-control" placeholder="Nueva colección" id="newCollection">
                   <button class="btn btn-outline-primary" type="button" (click)="addNewCollection()">Agregar</button>
                 </div>

@@ -12,7 +12,7 @@ const express = require('express');
 const cors = require('cors');
 const morgan = require('morgan');
 const app = express();
-const {mongoose} = require('./database');
+const mongoose = require('./database');
 const {json} = require('express');
 
 //Middlewares
