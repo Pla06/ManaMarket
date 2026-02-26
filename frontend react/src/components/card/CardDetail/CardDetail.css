@@ -2,6 +2,10 @@
   background-color: var(--mtg-bg-dark);
 }
 
+.detail-container p {
+  color: rgba(255, 255, 255, 0.8);
+}
+
 .detail-image {
   width: 100%;
   border-radius: 0.75rem;
@@ -31,9 +35,9 @@
   gap: 1rem;
   margin: 2rem 0;
   padding: 1.5rem;
-  background-color: rgba(255, 255, 255, 0.03);
+  background-color: rgba(255, 255, 255, 0.05);
   border-radius: 0.75rem;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 .info-grid > div {
@@ -42,7 +46,7 @@
 
 .label {
   font-size: 0.85rem;
-  color: #ffffff;
+  color: rgba(255, 255, 255, 0.85);
   text-transform: uppercase;
   letter-spacing: 0.04em;
   font-weight: 600;
@@ -65,7 +69,7 @@
 .btn-success {
   background-color: var(--mtg-blue);
   border-color: var(--mtg-blue);
-  color: #ffffff;
+  color: #ffffff !important;
   font-weight: 500;
 }
 
@@ -73,27 +77,87 @@
 .btn-success:hover {
   background-color: #0a5287;
   border-color: #0a5287;
+  color: #ffffff !important;
 }
 
 .btn-outline-secondary {
   border-color: rgba(255, 255, 255, 0.3);
-  color: #ffffff;
+  color: #ffffff !important;
 }
 
 .btn-outline-secondary:hover {
   background-color: rgba(255, 255, 255, 0.1);
   border-color: rgba(255, 255, 255, 0.5);
-  color: #ffffff;
+  color: #ffffff !important;
+}
+
+.btn-nav {
+  background: linear-gradient(135deg, var(--mtg-blue), #0a5287);
+  border: 2px solid var(--mtg-blue);
+  color: #ffffff !important;
+  font-weight: 600;
+  padding: 0.5rem 1.5rem;
+  box-shadow: 0 4px 12px rgba(14, 104, 171, 0.3);
+  transition: all 0.3s ease;
+}
+
+.btn-nav:hover:not(:disabled) {
+  background: linear-gradient(135deg, #0a5287, var(--mtg-blue));
+  border-color: #0a5287;
+  color: #ffffff !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(14, 104, 171, 0.4);
+}
+
+.btn-nav:disabled {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.4);
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+.btn-edit {
+  background: linear-gradient(135deg, var(--mtg-green), #006b3d);
+  border: 2px solid var(--mtg-green);
+  color: #ffffff !important;
+  font-weight: 600;
+  padding: 0.5rem 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 115, 62, 0.3);
+  transition: all 0.3s ease;
+  text-decoration: none !important;
+  display: inline-block;
+}
+
+.btn-edit:hover {
+  background: linear-gradient(135deg, #006b3d, var(--mtg-green));
+  border-color: #006b3d;
+  color: #ffffff !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 115, 62, 0.4);
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  border-color: #dc3545;
+  color: #ffffff !important;
+}
+
+.btn-danger:hover {
+  background-color: #bb2d3b;
+  border-color: #bb2d3b;
+  color: #ffffff !important;
 }
 
 .btn-outline-dark {
   border-color: rgba(255, 255, 255, 0.3);
-  color: #ffffff;
+  color: #ffffff !important;
 }
 
 .btn-outline-dark:hover {
   background-color: rgba(255, 255, 255, 0.1);
   border-color: rgba(255, 255, 255, 0.5);
+  color: #ffffff !important;
   color: #ffffff;
 }
 

@@ -57,7 +57,7 @@ export const Home: React.FC = () => {
               <h1 className="display-3 fw-bold mb-3">
                 🎴 Bienvenido a Mana Market
               </h1>
-              <p className="lead text-light-emphasis mb-4">
+              <p className="lead text-white mb-4">
                 Tu tienda especializada en cartas de Magic: The Gathering. Explora, colecciona y construye tu mazo perfecto.
               </p>
               <div className="d-flex gap-3 flex-wrap">
@@ -158,25 +158,27 @@ export const Home: React.FC = () => {
           {loading ? (
             <p>Cargando cartas...</p>
           ) : (
-            <div className="row g-4">
-              {recentCards.map(card => (
-                <div key={card._id} className="col-md-6 col-lg-4 col-xxl-3">
-                  <Link to={`/card/detail/${card._id}`} className="card-link">
-                    <div className="card">
-                      <img src={card.imageUrl} className="card-img-top" alt={card.name} />
-                      <div className="card-body">
-                        <h5 className="card-title">{card.name}</h5>
-                        <p className="card-text text-light">
-                          <small>{card.collection}</small>
-                        </p>
-                        <div className="d-flex justify-content-between align-items-center">
-                          <span className="h5 mb-0">{card.price.toFixed(2)}€</span>
+            <div className="carousel-container">
+              <div className="carousel-track">
+                {recentCards.map(card => (
+                  <div key={card._id} className="carousel-card">
+                    <Link to={`/card/detail/${card._id}`} className="card-link">
+                      <div className="card">
+                        <img src={card.imageUrl} className="card-img-top" alt={card.name} />
+                        <div className="card-body">
+                          <h5 className="card-title text-white">{card.name}</h5>
+                          <p className="card-text text-light">
+                            <small>{card.collection}</small>
+                          </p>
+                          <div className="d-flex justify-content-between align-items-center">
+                            <span className="h5 mb-0 text-white fw-bold">{card.price.toFixed(2)}€</span>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  </Link>
-                </div>
-              ))}
+                    </Link>
+                  </div>
+                ))}
+              </div>
             </div>
           )}
         </div>

@@ -131,10 +131,10 @@ export const CardDetail: React.FC = () => {
   return (
     <div className="container-fluid my-4 detail-container">
       <div className="d-flex justify-content-between mb-3">
-        <button className="btn btn-outline-secondary" onClick={goToPrevious} disabled={!hasPrevious()}>
+        <button className="btn btn-nav" onClick={goToPrevious} disabled={!hasPrevious()}>
           ← Anterior
         </button>
-        <button className="btn btn-outline-secondary" onClick={goToNext} disabled={!hasNext()}>
+        <button className="btn btn-nav" onClick={goToNext} disabled={!hasNext()}>
           Siguiente →
         </button>
       </div>
@@ -145,7 +145,7 @@ export const CardDetail: React.FC = () => {
         </div>
         <div className="col-md-7 col-lg-8">
           <div className="d-flex justify-content-between align-items-start flex-wrap gap-2">
-            <h2 className="display-6 mb-0 fw-bold">{card.name}</h2>
+            <h2 className="display-6 mb-0 fw-bold text-white">{card.name}</h2>
             <span className="badge rarity-badge">{card.rarity}</span>
           </div>
           <p className="text-light mb-3">{card.collection} · {card.type}</p>
@@ -180,7 +180,7 @@ export const CardDetail: React.FC = () => {
               {isFav ? '❤️ Quitar de favoritos' : '🤍 Añadir a favoritos'}
             </button>
             <Link to="/card/list" className="btn btn-outline-secondary">Volver al listado</Link>
-            <Link to={`/card/edit/${card._id}`} className="btn btn-outline-dark">Editar</Link>
+            <Link to={`/card/edit/${card._id}`} className="btn btn-edit">Editar</Link>
           </div>
         </div>
       </div>

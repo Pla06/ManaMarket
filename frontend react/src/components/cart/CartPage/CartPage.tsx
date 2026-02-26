@@ -103,7 +103,7 @@ export const CartPage: React.FC = () => {
     <div className="container-fluid py-4 cart-container">
       <div className="row">
         <div className="col-12">
-          <h2 className="display-5 mb-4 fw-bold">Mi Carrito</h2>
+          <h2 className="display-5 mb-4 fw-bold text-white">Mi Carrito</h2>
         </div>
       </div>
 

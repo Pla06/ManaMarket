@@ -97,6 +97,10 @@ export const CardList: React.FC = () => {
     updatePagination(cards);
   }, [currentPage, cards]);
 
+  useEffect(() => {
+    applyFilters();
+  }, [priceSort]);
+
   const clearFilters = () => {
     setSelectedCollection('');
     setSelectedCondition('');
@@ -164,7 +168,7 @@ export const CardList: React.FC = () => {
     <div className="container-fluid border border-2 rounded mt-3 mb-3 card-list-container">
       <div className="d-flex justify-content-between align-items-center flex-wrap p-3">
         <div>
-          <h2 className="display-5 mb-0 fw-bold">Listado de cartas</h2>
+          <h2 className="display-5 mb-0 fw-bold text-white">Listado de cartas</h2>
           <div className="text-light">Cantidad de cartas: {cards.length}</div>
         </div>
         <Link to="/card/add" className="btn btn-primary">Agregar carta</Link>
@@ -259,7 +263,7 @@ export const CardList: React.FC = () => {
                     <small>{card.collection} • {card.condition}</small>
                   </p>
                   <div className="d-flex justify-content-between align-items-center">
-                    <span className="h5 mb-0">{card.price.toFixed(2)}€</span>
+                    <span className="h5 mb-0 text-white fw-bold">{card.price.toFixed(2)}€</span>
                     <button 
                       className={`btn btn-sm ${isFavorite(card._id) ? 'btn-danger' : 'btn-outline-danger'}`}
                       onClick={(e) => toggleFavorite(e, card)}

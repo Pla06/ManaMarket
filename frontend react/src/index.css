@@ -29,6 +29,36 @@ h1, h2, h3, h4, h5, h6 {
   color: #ffffff;
 }
 
+.text-light {
+  color: rgba(255, 255, 255, 0.88) !important;
+}
+
+.text-muted {
+  color: rgba(255, 255, 255, 0.72) !important;
+}
+
+.btn {
+  border-radius: 0.5rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.btn:focus,
+.btn:active {
+  box-shadow: 0 0 0 0.2rem rgba(14, 104, 171, 0.35);
+}
+
+.btn-outline-light {
+  border-color: rgba(255, 255, 255, 0.6);
+  color: #ffffff;
+}
+
+.btn-outline-light:hover {
+  background-color: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.8);
+  color: #ffffff;
+}
+
 .navbar-magic {
   background: linear-gradient(90deg, 
     var(--mtg-white) 0%, 

@@ -62,7 +62,7 @@ export const Favorites: React.FC = () => {
     <div className="container-fluid py-4 favorites-container">
       <div className="d-flex justify-content-between align-items-center flex-wrap p-3">
         <div>
-          <h2 className="display-5 mb-0 fw-bold">Mis Favoritos</h2>
+          <h2 className="display-5 mb-0 fw-bold text-white">Mis Favoritos</h2>
           <div className="text-light">Cantidad de favoritos: {favorites.length}</div>
         </div>
         {favorites.length > 0 && (

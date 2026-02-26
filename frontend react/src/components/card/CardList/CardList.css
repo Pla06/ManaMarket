@@ -6,18 +6,19 @@
 .filters-section {
   background: rgba(255, 255, 255, 0.02);
   backdrop-filter: blur(10px);
+  border-radius: 0.75rem;
 }
 
 .filters-section .form-select,
 .filters-section .form-control {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: white;
+  background: rgba(15, 15, 15, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #ffffff;
 }
 
 .filters-section .form-select:focus,
 .filters-section .form-control:focus {
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(25, 25, 25, 0.95);
   border-color: var(--mtg-blue);
   color: white;
   box-shadow: 0 0 0 0.25rem rgba(14, 104, 171, 0.25);
@@ -35,11 +36,11 @@
 }
 
 .card-item {
-  background-color: rgba(13, 13, 13, 0.8);
-  border: 2px solid transparent;
-  border-radius: 0.5rem;
+  background: linear-gradient(180deg, rgba(20, 20, 20, 0.95), rgba(10, 10, 10, 0.95));
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 0.75rem;
   overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
   transition: all 0.3s ease;
   text-decoration: none;
   color: inherit;
@@ -47,9 +48,9 @@
 }
 
 .card-item:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 8px 24px rgba(14, 104, 171, 0.6);
-  border-color: var(--mtg-blue);
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 12px 30px rgba(14, 104, 171, 0.35);
+  border-color: rgba(14, 104, 171, 0.6);
 }
 
 .card-item img {
@@ -57,6 +58,7 @@
   height: 320px;
   object-fit: cover;
   display: block;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .card-item .card-body {
@@ -69,10 +71,11 @@
   font-size: 1.1rem;
   line-height: 1.4;
   margin-bottom: 0.5rem;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
 }
 
 .card-item .card-text {
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(255, 255, 255, 0.7);
   font-size: 0.95rem;
   margin-bottom: 1rem;
 }

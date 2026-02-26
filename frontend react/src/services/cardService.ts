@@ -1,15 +1,7 @@
-import axios from 'axios';
 import { Card, InterfaceCard, InterfaceCards } from '../common/interfaces';
 
 const BASE_URL = 'http://localhost:3000/api/v1/cards/';
-
-const axiosInstance = axios.create({
-  baseURL: BASE_URL,
-  timeout: 10000, // 10 segundos timeout
-  headers: {
-    'Content-Type': 'application/json',
-  }
-});
+const TIMEOUT = 10000; // 10 segundos timeout
 
 export interface ApiResponse {
   status: string;
@@ -19,28 +11,70 @@ export interface ApiResponseGenres {
   status: string[];
 }
 
+// Helper para fetch con timeout
+const fetchWithTimeout = async (url: string, options: RequestInit = {}): Promise<Response> => {
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), TIMEOUT);
+
+  try {
+    const response = await fetch(url, {
+      ...options,
+      signal: controller.signal,
+      headers: {
+        'Content-Type': 'application/json',
+        ...options.headers,
+      },
+    });
+
+    clearTimeout(timeoutId);
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    return response;
+  } catch (error) {
+    clearTimeout(timeoutId);
+    throw error;
+  }
+};
+
 export const cardService = {
-  getCards: (): Promise<InterfaceCards> => {
-    return axiosInstance.get<InterfaceCards>('').then(res => res.data);
+  getCards: async (): Promise<InterfaceCards> => {
+    const response = await fetchWithTimeout(BASE_URL);
+    return response.json();
   },
 
-  getCard: (id: string): Promise<InterfaceCard> => {
-    return axiosInstance.get<InterfaceCard>(id).then(res => res.data);
+  getCard: async (id: string): Promise<InterfaceCard> => {
+    const response = await fetchWithTimeout(`${BASE_URL}${id}`);
+    return response.json();
   },
 
-  addCard: (card: Omit<Card, '_id'>): Promise<ApiResponse> => {
-    return axiosInstance.post<ApiResponse>('', card).then(res => res.data);
+  addCard: async (card: Omit<Card, '_id'>): Promise<ApiResponse> => {
+    const response = await fetchWithTimeout(BASE_URL, {
+      method: 'POST',
+      body: JSON.stringify(card),
+    });
+    return response.json();
   },
 
-  updateCard: (card: Card): Promise<ApiResponse> => {
-    return axiosInstance.put<ApiResponse>(card._id, card).then(res => res.data);
+  updateCard: async (card: Card): Promise<ApiResponse> => {
+    const response = await fetchWithTimeout(`${BASE_URL}${card._id}`, {
+      method: 'PUT',
+      body: JSON.stringify(card),
+    });
+    return response.json();
   },
 
-  deleteCard: (id: string): Promise<ApiResponse> => {
-    return axiosInstance.delete<ApiResponse>(id).then(res => res.data);
+  deleteCard: async (id: string): Promise<ApiResponse> => {
+    const response = await fetchWithTimeout(`${BASE_URL}${id}`, {
+      method: 'DELETE',
+    });
+    return response.json();
   },
 
-  getCollections: (): Promise<ApiResponseGenres> => {
-    return axiosInstance.get<ApiResponseGenres>('collections').then(res => res.data);
+  getCollections: async (): Promise<ApiResponseGenres> => {
+    const response = await fetchWithTimeout(`${BASE_URL}collections`);
+    return response.json();
   },
 };
