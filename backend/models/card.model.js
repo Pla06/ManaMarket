@@ -1,3 +1,7 @@
+/**
+ * Esquema de MongoDB para colección de cartas (cards).
+ * Define campos como nombre, colección, precio, idioma, etc.
+ */
 const mongoose = require('mongoose');
 const { Schema } = require('mongoose');
 

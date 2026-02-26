@@ -1,3 +1,7 @@
+/**
+ * Definición de rutas de la aplicación Angular.
+ * Cada path apunta a un componente específico.
+ */
 import { Routes } from '@angular/router';
 import {CardListComponent} from './components/card/card-list/card-list.component';
 import {CardEditComponent} from './components/card/card-edit/card-edit.component';

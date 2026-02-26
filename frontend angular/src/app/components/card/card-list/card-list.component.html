@@ -1,5 +1,13 @@
-@defer (when cards.length > 0 || allCards.length > 0) {
-  <div class="container-fluid border border-2 rounded mt-3 mb-3 card-list-container">
+<div class="container-fluid border border-2 rounded mt-3 mb-3 card-list-container">
+  @if (errorMessage) {
+    <div class="alert alert-danger m-3">{{ errorMessage }}</div>
+  }
+  
+  @if (isLoading) {
+    <div class="text-center p-4">
+      <h6 class="text-light">Cargando cartas...</h6>
+    </div>
+  } @else {
     <div class="d-flex justify-content-between align-items-center flex-wrap p-3">
       <div>
         <h2 class="display-5 mb-0 fw-bold">Listado de cartas</h2>
@@ -7,7 +15,6 @@
       </div>
       <button class="btn btn-primary" routerLink="/card/add">Agregar carta</button>
     </div>
-
     <!-- Filtros -->
     <div class="filters-section p-3 border-top border-bottom border-secondary">
       <div class="row g-3 align-items-end">
@@ -139,10 +146,5 @@
         </div>
       </div>
     }
-  </div>
-
-} @placeholder () {
-  <div class="container-fluid text-center">
-    <h6 class="display-5 text-primary">Cargando Cards...</h6>
-  </div>
-}
+  }
+</div>

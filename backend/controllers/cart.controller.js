@@ -1,3 +1,7 @@
+/**
+ * Controlador de carritos de compra.
+ * Funciones CRUD para interactuar con el modelo Cart.
+ */
 const Cart = require('../models/cart.model');
 const cartCtrl = {};
 

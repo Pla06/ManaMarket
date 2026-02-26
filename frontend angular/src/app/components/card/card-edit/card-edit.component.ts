@@ -135,6 +135,17 @@ export class CardEditComponent implements OnInit{
       return;
     }
 
+    if (this.formCard.invalid) {
+      this.formCard.markAllAsTouched();
+      Swal.fire({
+        icon: 'warning',
+        title: 'Formulario incompleto',
+        text: 'Revisa los campos obligatorios antes de continuar.',
+        confirmButtonText: 'Entendido'
+      });
+      return;
+    }
+
     if (this.editar && this.formCard.valid){
       this.isSubmitting = true;
       this.cardService.updateCard(this.formCard.getRawValue()).subscribe(
@@ -207,6 +218,8 @@ export class CardEditComponent implements OnInit{
       this.collectionList.push(value);
     }
     this.formCard.patchValue({ collection: value });
+    this.collection?.markAsDirty();
+    this.collection?.markAsTouched();
     this.myNewCollection.reset();
   }
 

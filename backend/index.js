@@ -1,10 +1,20 @@
+/**
+ * Main backend server startup file.
+ * Configura Express, middlewares y rutas, y arranca el servidor.
+ * - usa morgan para logging, cors para cross‑origin y express.json para
+ *   parsear el cuerpo de las peticiones.
+ * - conecta con la base de datos en ./database.
+ * - monta routers para /api/v1/cards, /users, /carts, /orders.
+ * - inicia el servidor en el puerto especificado por PORT o 3000.
+ */
 // console.log("Hola desde el backend");
 const express = require('express');
 const cors = require('cors');
 const morgan = require('morgan');
+const { connectDB } = require('./database');
+const { json } = require('express');
+
 const app = express();
-const {mongoose} = require('./database');
-const {json} = require('express');
 
 //Middlewares
 app.use(morgan('dev'));
@@ -21,7 +31,13 @@ app.use('/', (req, res) => res.send('API is in /api/v1/cards/'));
 
 //Settings
 app.set('port', process.env.PORT || 3000);
-//iniciar el server
-app.listen(app.get('port'),() =>{
-    console.log('Server on port', app.get('port'));
-})
+
+//Conectar a DB e iniciar el server
+connectDB().then(() => {
+    app.listen(app.get('port'), () => {
+        console.log('Server on port', app.get('port'));
+    });
+}).catch((err) => {
+    console.error('Failed to start server:', err);
+    process.exit(1);
+});

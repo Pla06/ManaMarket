@@ -1,3 +1,7 @@
+/**
+ * Esquema de usuarios.
+ * Contiene nombre y email únicos.
+ */
 const mongoose = require('mongoose');
 const { Schema } = require('mongoose');
 

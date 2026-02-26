@@ -1,3 +1,7 @@
+/**
+ * Rutas de usuarios.
+ * Gestionan recursos de usuario a través de user.controller.
+ */
 const express = require('express');
 const userCtrl = require('../controllers/user.controller');
 const router = express.Router();

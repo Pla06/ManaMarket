@@ -1,4 +1,9 @@
-const mongoose = require('./database');
+/**
+ * Script para poblar la base de datos con datos iniciales (usuarios,
+ * cartas, carritos y pedidos). Se borra el contenido existente y se
+ * insertan registros de ejemplo. Útil para desarrollo o pruebas.
+ */
+const { mongoose, connectDB } = require('./database');
 const User = require('./models/user.model');
 const Card = require('./models/card.model');
 const Cart = require('./models/cart.model');
@@ -37,7 +42,7 @@ const cardsSeed = [
 
 async function runSeed() {
     try {
-        await mongoose.connection.asPromise();
+        await connectDB();
 
         await Promise.all([
             Order.deleteMany({}),
@@ -151,7 +156,7 @@ async function runSeed() {
         console.error('Si usas Atlas, añade tu IP en Network Access o define MONGODB_URI en backend/.env para usar otra base de datos.');
         process.exitCode = 1;
     } finally {
-        await mongoose.connection.close();
+        await mongoose.disconnect();
     }
 }
 
