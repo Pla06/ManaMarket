@@ -7,9 +7,8 @@
 const mongoose = require('mongoose');
 require('dotenv').config();
 
-const ATLAS_URI = `mongodb+srv://hecmardom_db_user:dyGkaFn7LiHdVjEc@manamarket.3lsst8d.mongodb.net/ManaMarket?appName=ManaMarket`;
 const LOCAL_URI = 'mongodb://127.0.0.1:27017/ManaMarket';
-const URI = process.env.MONGODB_URI || ATLAS_URI;
+const URI = process.env.MONGODB_URI || LOCAL_URI;
 
 mongoose.connect(URI)
     .then(() => console.log(`DB is connected (${URI.includes('127.0.0.1') ? 'local' : 'atlas'})`))
