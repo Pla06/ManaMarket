@@ -50,35 +50,54 @@ cardCtrl.getCard = async (req, res) => {
 
 // Agregar una carta nueva
 cardCtrl.addCard = async (req, res) => {
-    const card = new Card(req.body);
-    await card.save()
-        .then(() => res.status(201).json({ status: 'Card Successfully Inserted' }))
-        .catch((err) => res.status(400).json({ status: err }));
+    try {
+        console.log('POST /cards - Body:', req.body);
+        const card = new Card(req.body);
+        const savedCard = await card.save();
+        console.log('Card saved successfully:', savedCard._id);
+        res.status(201).json({ status: 'Card Successfully Inserted', data: savedCard });
+    } catch (err) {
+        console.error('Error adding card:', err.message);
+        res.status(400).json({ status: 'Error adding card', error: err.message });
+    }
 };
 
 // Actualizar una carta
 cardCtrl.updateCard = async (req, res) => {
-    const card = req.body;
-    await Card.findByIdAndUpdate(
-        req.params.id,
-        { $set: card },
-        { new: true }
-    )
-        .then((data) => {
-            if (data) res.status(200).json({ status: 'Card Successfully Updated' });
-            else res.status(404).json({ status: 'Card not found' });
-        })
-        .catch((err) => res.status(400).json({ status: err }));
+    try {
+        console.log(`PUT /cards/${req.params.id} - Body:`, req.body);
+        const updatedCard = await Card.findByIdAndUpdate(
+            req.params.id,
+            { $set: req.body },
+            { new: true, runValidators: true }
+        );
+        if (!updatedCard) {
+            console.log('Card not found:', req.params.id);
+            return res.status(404).json({ status: 'Card not found' });
+        }
+        console.log('Card updated successfully:', updatedCard._id);
+        res.status(200).json({ status: 'Card Successfully Updated', data: updatedCard });
+    } catch (err) {
+        console.error('Error updating card:', err.message);
+        res.status(400).json({ status: 'Error updating card', error: err.message });
+    }
 };
 
 // Eliminar una carta
 cardCtrl.deleteCard = async (req, res) => {
-    await Card.findByIdAndDelete(req.params.id)
-        .then((data) => {
-            if (data) res.status(200).json({ status: 'Card Successfully Deleted' });
-            else res.status(404).json({ status: 'Card not found' });
-        })
-        .catch((err) => res.status(400).json({ status: err }));
+    try {
+        console.log(`DELETE /cards/${req.params.id}`);
+        const deletedCard = await Card.findByIdAndDelete(req.params.id);
+        if (!deletedCard) {
+            console.log('Card not found:', req.params.id);
+            return res.status(404).json({ status: 'Card not found' });
+        }
+        console.log('Card deleted successfully:', deletedCard._id);
+        res.status(200).json({ status: 'Card Successfully Deleted', data: deletedCard });
+    } catch (err) {
+        console.error('Error deleting card:', err.message);
+        res.status(400).json({ status: 'Error deleting card', error: err.message });
+    }
 };
 
 // Saca la Lista de colecciones

@@ -1,0 +1,124 @@
+.detail-container {
+  background-color: var(--mtg-bg-dark);
+}
+
+.detail-image {
+  width: 100%;
+  border-radius: 0.75rem;
+  box-shadow: 0 16px 30px rgba(0, 0, 0, 0.5);
+  object-fit: cover;
+  aspect-ratio: 3 / 4;
+  border: 3px solid var(--mtg-blue);
+  max-width: 500px;
+}
+
+@media (max-width: 768px) {
+  .detail-image {
+    max-width: 100%;
+  }
+}
+
+.rarity-badge {
+  background: linear-gradient(135deg, var(--mtg-red), var(--mtg-green));
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1rem;
+  margin: 2rem 0;
+  padding: 1.5rem;
+  background-color: rgba(255, 255, 255, 0.03);
+  border-radius: 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.info-grid > div {
+  text-align: center;
+}
+
+.label {
+  font-size: 0.85rem;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-weight: 600;
+  opacity: 0.8;
+  margin-bottom: 0.5rem;
+}
+
+.value {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--mtg-blue);
+}
+
+.btn {
+  border-radius: 0.375rem;
+  transition: all 0.3s ease;
+}
+
+.btn-primary,
+.btn-success {
+  background-color: var(--mtg-blue);
+  border-color: var(--mtg-blue);
+  color: #ffffff;
+  font-weight: 500;
+}
+
+.btn-primary:hover,
+.btn-success:hover {
+  background-color: #0a5287;
+  border-color: #0a5287;
+}
+
+.btn-outline-secondary {
+  border-color: rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+}
+
+.btn-outline-secondary:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.5);
+  color: #ffffff;
+}
+
+.btn-outline-dark {
+  border-color: rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+}
+
+.btn-outline-dark:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.5);
+  color: #ffffff;
+}
+
+.btn-danger {
+  background-color: var(--mtg-red);
+  border-color: var(--mtg-red);
+}
+
+.btn-danger:hover {
+  background-color: #a51820;
+  border-color: #a51820;
+}
+
+.btn-outline-danger {
+  border-color: var(--mtg-red);
+  color: var(--mtg-red);
+}
+
+.btn-outline-danger:hover {
+  background-color: var(--mtg-red);
+  border-color: var(--mtg-red);
+  color: #ffffff;
+}
+
+.spinner-border {
+  border-color: rgba(14, 104, 171, 0.25);
+  border-right-color: var(--mtg-blue);
+}
