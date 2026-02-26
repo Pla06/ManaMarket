@@ -11,9 +11,10 @@
 const express = require('express');
 const cors = require('cors');
 const morgan = require('morgan');
+const { connectDB } = require('./database');
+const { json } = require('express');
+
 const app = express();
-const mongoose = require('./database');
-const {json} = require('express');
 
 //Middlewares
 app.use(morgan('dev'));
@@ -30,7 +31,13 @@ app.use('/', (req, res) => res.send('API is in /api/v1/cards/'));
 
 //Settings
 app.set('port', process.env.PORT || 3000);
-//iniciar el server
-app.listen(app.get('port'),() =>{
-    console.log('Server on port', app.get('port'));
-})
+
+//Conectar a DB e iniciar el server
+connectDB().then(() => {
+    app.listen(app.get('port'), () => {
+        console.log('Server on port', app.get('port'));
+    });
+}).catch((err) => {
+    console.error('Failed to start server:', err);
+    process.exit(1);
+});
